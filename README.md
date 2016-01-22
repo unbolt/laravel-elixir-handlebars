@@ -3,7 +3,7 @@
 ### Install
 
 ```sh
-$ npm install laravel-elixir-handlebars --save-dev
+$ npm install https://github.com/Genentech/laravel-elixir-handlebars.git --save-dev
 ```
 
 ### Example
@@ -18,6 +18,6 @@ elixir(function (mix) {
     // Handlebar templates
     mix.templates([
         'templates/**/*.hbs' // Will search in 'resources/views/templates'
-    ]);
+    ], 'compiled-templats.js', '<optional base path, default is resources/views/>', '<optional namespace declaration>');
 });
 ```
