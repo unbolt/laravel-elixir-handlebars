@@ -3,7 +3,7 @@
 ### Install
 
 ```sh
-$ npm install https://github.com/Genentech/laravel-elixir-handlebars.git --save-dev
+$ npm install https://github.com/unbolt/laravel-elixir-handlebars.git --save-dev
 ```
 
 ### Example
