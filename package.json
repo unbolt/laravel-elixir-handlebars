@@ -25,6 +25,6 @@
     "gulp-declare": "^0.3.0",
     "gulp-handlebars": "^4.0.0",
     "gulp-wrap": "^0.11.0",
-    "handlebars": "^3.0.2"
+    "handlebars": "^4.0.0"
   }
 }
