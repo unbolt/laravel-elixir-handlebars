@@ -7,7 +7,7 @@ var gulp          = require('gulp'),
 
 Elixir.extend('templates', function (src, output, basedir, namespace) {
     var templatePath = basedir ? basedir : 'resources/views';
-    
+
     new Elixir.Task('templates', function () {
 
         var paths = prepGulpPaths(src, output, templatePath);
@@ -24,19 +24,16 @@ Elixir.extend('templates', function (src, output, basedir, namespace) {
             .pipe(handlebars({
                 handlebars: require('handlebars')
             }))
-            //.pipe(handlebars({ wrapped: true}))
 
-            // Declare template functions as properties and sub-properties of exports
-            //.pipe(declare({
-            //    namespace: namespace ? namespace : 'hbs'
-            //}))
-            
             // Wrap each template function in a call to Handlebars.template
             .pipe(wrap('Handlebars.template(<%= contents %>)'))
-            
+
             .pipe(declare({
                 namespace: namespace ? namespace : 'HBS',
-                noRedeclare: true, // Avoid duplicate declarations 
+                noRedeclare: true, // Avoid duplicate declarations
+                processName: function(filePath) {
+                    return declare.processNameByPath(filePath.replace(templatePath, ''));
+                }
             }))
 
             // Concatenate down to a single file
@@ -61,4 +58,3 @@ var prepGulpPaths = function(src, output, templatePath) {
         .src(src, templatePath)
         .output(output || Elixir.config.get('config.js.outputFolder'), 'templates.js');
 };
-
