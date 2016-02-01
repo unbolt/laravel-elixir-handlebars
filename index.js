@@ -27,8 +27,16 @@ Elixir.extend('templates', function (src, output, basedir, namespace) {
             //.pipe(handlebars({ wrapped: true}))
 
             // Declare template functions as properties and sub-properties of exports
+            //.pipe(declare({
+            //    namespace: namespace ? namespace : 'hbs'
+            //}))
+            
+            // Wrap each template function in a call to Handlebars.template
+            .pipe(wrap('Handlebars.template(<%= contents %>)'))
+            
             .pipe(declare({
-                namespace: namespace ? namespace : 'hbs'
+                namespace: namespace ? namespace : 'HBS'
+                noRedeclare: true, // Avoid duplicate declarations 
             }))
 
             // Concatenate down to a single file
