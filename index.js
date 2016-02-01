@@ -35,7 +35,7 @@ Elixir.extend('templates', function (src, output, basedir, namespace) {
             .pipe(wrap('Handlebars.template(<%= contents %>)'))
             
             .pipe(declare({
-                namespace: namespace ? namespace : 'HBS'
+                namespace: namespace ? namespace : 'HBS',
                 noRedeclare: true, // Avoid duplicate declarations 
             }))
 
