@@ -21,7 +21,10 @@ Elixir.extend('templates', function (src, output, basedir, namespace) {
 
         return gulp.src(paths.src.path)
             .on('error', onError)
-            .pipe(handlebars({ wrapped: true}))
+            .pipe(handlebars({
+                handlebars: require('handlebars')
+            }))
+            //.pipe(handlebars({ wrapped: true}))
 
             // Declare template functions as properties and sub-properties of exports
             .pipe(declare({
