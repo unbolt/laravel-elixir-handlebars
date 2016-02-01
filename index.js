@@ -27,9 +27,9 @@ Elixir.extend('templates', function (src, output, basedir, namespace) {
             //.pipe(handlebars({ wrapped: true}))
 
             // Declare template functions as properties and sub-properties of exports
-            //.pipe(declare({
-            //    namespace: namespace ? namespace : 'hbs'
-            //}))
+            .pipe(declare({
+                namespace: namespace ? namespace : 'hbs'
+            }))
 
             // Concatenate down to a single file
             .pipe(concat(paths.output.name))
